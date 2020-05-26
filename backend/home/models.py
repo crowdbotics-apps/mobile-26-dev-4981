@@ -41,3 +41,8 @@ class Test(models.Model):
 class Abcd(models.Model):
     "Generated Model"
     gfgf = models.BigIntegerField()
+
+
+class GBFG(models.Model):
+    "Generated Model"
+    hghg = models.BigIntegerField()
