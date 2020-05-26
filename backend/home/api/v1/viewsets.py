@@ -1,6 +1,11 @@
 from rest_framework import viewsets
 from rest_framework import authentication
-from .serializers import CustomTextSerializer, GBFGSerializer, HomePageSerializer
+from .serializers import (
+    AbcdSerializer,
+    CustomTextSerializer,
+    GBFGSerializer,
+    HomePageSerializer,
+)
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.permissions import IsAdminUser
@@ -14,7 +19,7 @@ from home.api.v1.serializers import (
     HomePageSerializer,
     UserSerializer,
 )
-from home.models import CustomText, GBFG, HomePage
+from home.models import Abcd, CustomText, GBFG, HomePage
 
 
 class SignupViewSet(ModelViewSet):
@@ -61,3 +66,12 @@ class GBFGViewSet(viewsets.ModelViewSet):
         authentication.TokenAuthentication,
     )
     queryset = GBFG.objects.all()
+
+
+class AbcdViewSet(viewsets.ModelViewSet):
+    serializer_class = AbcdSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Abcd.objects.all()
